@@ -1,0 +1,28 @@
+﻿{
+  "currencies": [
+    {
+      "key": "Hard",
+      "min": 0,
+      "max": 9999999,
+      "start": 50
+    },
+    {
+      "key": "Energy",
+      "min": 0,
+      "max": 9999999,
+      "start": 100
+    },
+    {
+      "key": "Health",
+      "min": 10,
+      "max": 100,
+      "start": 50
+    },
+    {
+      "key": "Happiness",
+      "min": 10,
+      "max": 100,
+      "start": 50
+    }
+  ]
+}
