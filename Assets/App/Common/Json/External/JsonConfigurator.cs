@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace App.Common.Configurator.External
 {
     [Configurator(ContextConstants.GlobalContext)]    
-    public class MainConfigurator : Autumn.Runtime.Collection.Configurator
+    public class JsonConfigurator : Autumn.Runtime.Collection.Configurator
     {
         public override void Configuration()
         {
