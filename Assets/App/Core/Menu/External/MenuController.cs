@@ -4,6 +4,7 @@ using App.Common.Audio.External;
 using App.Common.Data.Runtime;
 using App.Common.SceneControllers.Runtime;
 using App.Common.Utilities.Utility.Runtime;
+using App.Common.Web.External;
 using App.Core.Menu.External.Presenter;
 using App.Game.Canvases.External;
 using Core.Currency.External;
@@ -20,6 +21,7 @@ namespace App.Menu.UI.External
         private readonly ISoundManager m_SoundManager;
         private readonly SoftCurrencyController m_SoftCurrencyController;
         private readonly EnergyCurrencyController m_EnergyCurrencyController;
+        private readonly IWebRequestManager m_WebRequestManager;
         
         private MenuPresenter m_Presenter;
 
@@ -30,7 +32,8 @@ namespace App.Menu.UI.External
             ISceneManager sceneManager, 
             SoftCurrencyController softCurrencyController, 
             EnergyCurrencyController energyCurrencyController, 
-            ISoundManager soundManager)
+            ISoundManager soundManager, 
+            IWebRequestManager webRequestManager)
         {
             m_MainCanvas = mainCanvas;
             m_AssetManager = assetManager;
@@ -39,6 +42,7 @@ namespace App.Menu.UI.External
             m_SoftCurrencyController = softCurrencyController;
             m_EnergyCurrencyController = energyCurrencyController;
             m_SoundManager = soundManager;
+            m_WebRequestManager = webRequestManager;
         }
 
         public void Init()
@@ -48,7 +52,8 @@ namespace App.Menu.UI.External
                 m_MainCanvas,
                 m_SoftCurrencyController,
                 m_EnergyCurrencyController,
-                m_SoundManager);
+                m_SoundManager,
+                m_WebRequestManager);
             if (!m_Presenter.Initialize())
             {
                 Debug.LogError($"Cant initialize");

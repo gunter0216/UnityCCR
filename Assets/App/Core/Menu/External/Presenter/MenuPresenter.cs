@@ -1,6 +1,7 @@
 ﻿using System;
 using App.Common.AssetSystem.Runtime;
 using App.Common.Audio.External;
+using App.Common.Web.External;
 using App.Game.Canvases.External;
 using App.Menu.UI.External.Animations;
 using App.Menu.UI.External.Presenter;
@@ -18,6 +19,7 @@ namespace App.Core.Menu.External.Presenter
         private readonly SoftCurrencyController m_SoftCurrencyController;
         private readonly EnergyCurrencyController m_EnergyCurrencyController;
         private readonly ISoundManager m_SoundManager;
+        private readonly IWebRequestManager m_WebRequestManager;
 
         private MenuView m_View;
         
@@ -34,17 +36,20 @@ namespace App.Core.Menu.External.Presenter
         
         private SoftAccrualAnimation m_SoftAccrualAnimation;
 
-        public MenuPresenter(IAssetManager assetManager,
+        public MenuPresenter(
+            IAssetManager assetManager,
             ICanvas canvas,
             SoftCurrencyController softCurrencyController,
-            EnergyCurrencyController energyCurrencyController, 
-            ISoundManager soundManager)
+            EnergyCurrencyController energyCurrencyController,
+            ISoundManager soundManager, 
+            IWebRequestManager webRequestManager)
         {
             m_AssetManager = assetManager;
             m_Canvas = canvas;
             m_SoftCurrencyController = softCurrencyController;
             m_EnergyCurrencyController = energyCurrencyController;
             m_SoundManager = soundManager;
+            m_WebRequestManager = webRequestManager;
         }
 
         public bool Initialize()
@@ -64,7 +69,10 @@ namespace App.Core.Menu.External.Presenter
                 m_EnergyCurrencyController,
                 m_AssetManager,
                 m_SoundManager);
-            m_WeatherMenuState = new WeatherMenuState(m_View.WeatherView);
+            m_WeatherMenuState = new WeatherMenuState(
+                m_View.WeatherView, 
+                m_AssetManager,
+                m_WebRequestManager);
             m_DogsMenuState = new DogsMenuState(m_View.DogsView);
             
             m_ClickerMenuState.Initialize();
