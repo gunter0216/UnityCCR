@@ -1,4 +1,6 @@
 ﻿using System;
+using App.Common.AssetSystem.Runtime;
+using App.Common.Audio.External;
 using App.Menu.UI.External.Animations;
 using App.Menu.UI.External.View.Clicker;
 using Core.Currency.External;
@@ -13,65 +15,83 @@ namespace App.Menu.UI.External.Presenter
         private readonly ISoftAccrualAnimation m_SoftAccrualAnimation;
         private readonly SoftCurrencyController m_SoftCurrencyController;
         private readonly EnergyCurrencyController m_EnergyCurrencyController;
-        
-        private IDisposable m_TimerSubscription;
+        private readonly IAssetManager m_AssetManager;
+        private readonly ISoundManager m_SoundManager;
 
-        public ClickerMenuState(
-            ClickerView view,
-            ISoftAccrualAnimation softAccrualAnimation, 
+        private ClickerConfigController m_ConfigController;
+
+        private ClickerAutoCollectionTimer m_AutoCollectionTimer;
+        private ClickerEnergyRecoveryTimer m_EnergyRecoveryTimer;
+
+        public ClickerMenuState(ClickerView view,
+            ISoftAccrualAnimation softAccrualAnimation,
             SoftCurrencyController softCurrencyController,
-            EnergyCurrencyController energyCurrencyController)
+            EnergyCurrencyController energyCurrencyController,
+            IAssetManager assetManager, 
+            ISoundManager soundManager)
         {
             m_View = view;
             m_SoftAccrualAnimation = softAccrualAnimation;
             m_SoftCurrencyController = softCurrencyController;
             m_EnergyCurrencyController = energyCurrencyController;
+            m_AssetManager = assetManager;
+            m_SoundManager = soundManager;
         }
 
         public void Initialize()
         {
+            m_ConfigController = new ClickerConfigController(m_AssetManager);
+            m_ConfigController.Initialize();
+            
             m_View.SetClickerButtonCallback(OnButtonClick);
+            
+            m_AutoCollectionTimer = new ClickerAutoCollectionTimer(m_ConfigController, OnAutoCollectionTimerTick);
+            m_EnergyRecoveryTimer = new ClickerEnergyRecoveryTimer(m_ConfigController, OnEnergyRecoveryTimerTick);
+            
+            m_EnergyRecoveryTimer.StartTimer();
+            
+            UpdateSoftView();
+            UpdateEnergyView();
+        }
+
+        private void OnEnergyRecoveryTimerTick()
+        {
+            m_EnergyCurrencyController.Add(m_ConfigController.GetEnergyRecoveryValue());
+            UpdateEnergyView();
+        }
+
+        private void OnAutoCollectionTimerTick()
+        {
+            var energySpend = m_ConfigController.GetAutoCollectionTimerEnergyPrice();
+            var softIncome = m_ConfigController.GetAutoCollectionTimerSoftIncome();
+            ProcessButtonClick(energySpend, softIncome);
         }
 
         private void OnButtonClick()
         {
-            if (!m_EnergyCurrencyController.IsEnough(1)) 
+            var energySpend = m_ConfigController.GetClickEnergyPrice();
+            var softIncome = m_ConfigController.GetClickSoftIncome();
+            ProcessButtonClick(energySpend, softIncome);
+        }
+
+        private void ProcessButtonClick(long energySpend, long softIncome)
+        {
+            if (!m_EnergyCurrencyController.IsEnough(energySpend)) 
             {
                 return;
             }
             
             var parent = m_View.ButtonRectTransform;
             var localPosition = new Vector3(0, 100, 0);
-            m_SoftAccrualAnimation.PlayAnimation(localPosition, parent, 1);
-            m_SoftCurrencyController.Add(1);
-            m_EnergyCurrencyController.Spend(1);
+            m_SoundManager.Play("TapSound");
+            m_SoftAccrualAnimation.PlayAnimation(localPosition, parent, softIncome);
+            m_View.ParticleSystem.Play();
+            
+            m_SoftCurrencyController.Add(softIncome);
+            m_EnergyCurrencyController.Spend(energySpend);
             
             UpdateEnergyView();
             UpdateSoftView();
-        }
-        
-        private void StartTimer()
-        {
-            StopTimer();
-
-            m_TimerSubscription = Observable
-                .Interval(TimeSpan.FromSeconds(3))
-                .Subscribe(OnTimerTick);
-        }
-        
-        private void OnTimerTick(long _)
-        {
-            // Логика, которая выполняется при каждом тике таймера
-            Debug.Log("Таймер сработал!");
-        }
-
-        private void StopTimer()
-        {
-            if (m_TimerSubscription != null)
-            {
-                m_TimerSubscription.Dispose();
-                m_TimerSubscription = null;
-            }
         }
 
         private void UpdateSoftView()
@@ -89,18 +109,19 @@ namespace App.Menu.UI.External.Presenter
         public void Enter()
         {
             m_View.SetActive(true);
-            StartTimer();
+            m_AutoCollectionTimer.StartTimer();
         }
 
         public void Exit()
         {
             m_View.SetActive(false);
-            StopTimer();
+            m_AutoCollectionTimer.StopTimer();
         }
 
         public void Dispose()
         {
-            m_TimerSubscription?.Dispose();
+            m_AutoCollectionTimer?.Dispose();
+            m_EnergyRecoveryTimer?.Dispose();
         }
     }
 }

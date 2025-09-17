@@ -46,6 +46,8 @@ namespace Core.Currency.External
         public bool Add(long value)
         {
             m_Data.Value += value;
+            var maxValue = m_ConfigController.GetMaxValue();
+            m_Data.Value = m_Data.Value > maxValue ? maxValue : m_Data.Value; 
             
             return true;
         }

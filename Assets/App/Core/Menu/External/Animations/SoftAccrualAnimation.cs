@@ -56,7 +56,7 @@ namespace App.Menu.UI.External.Animations
             return Optional<SoftAccrualView>.Success(view);
         }
 
-        public void PlayAnimation(Vector3 localPosition, Transform parent, int amount)
+        public void PlayAnimation(Vector3 localPosition, Transform parent, long amount)
         {
             var view = m_Pool.Get();
             if (!view.HasValue)

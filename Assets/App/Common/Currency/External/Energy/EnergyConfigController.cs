@@ -34,5 +34,10 @@ namespace Core.Currency.External
         {
             return m_Config.StartValue;
         }
+
+        public long GetMaxValue()
+        {
+            return m_Config.MaxValue;
+        }
     }
 }

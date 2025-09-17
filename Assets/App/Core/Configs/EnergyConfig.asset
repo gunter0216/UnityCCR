@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: EnergyConfig
   m_EditorClassIdentifier: 
   m_StartValue: 1000
+  m_MaxValue: 1000

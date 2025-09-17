@@ -1,5 +1,6 @@
 ﻿using System;
 using App.Common.AssetSystem.Runtime;
+using App.Common.Audio.External;
 using App.Common.Data.Runtime;
 using App.Common.SceneControllers.Runtime;
 using App.Common.Utilities.Utility.Runtime;
@@ -16,6 +17,7 @@ namespace App.Menu.UI.External
         private readonly IAssetManager m_AssetManager;
         private readonly IDataManager m_DataManager;
         private readonly ISceneManager m_SceneManager;
+        private readonly ISoundManager m_SoundManager;
         private readonly SoftCurrencyController m_SoftCurrencyController;
         private readonly EnergyCurrencyController m_EnergyCurrencyController;
         
@@ -27,7 +29,8 @@ namespace App.Menu.UI.External
             IDataManager dataManager, 
             ISceneManager sceneManager, 
             SoftCurrencyController softCurrencyController, 
-            EnergyCurrencyController energyCurrencyController)
+            EnergyCurrencyController energyCurrencyController, 
+            ISoundManager soundManager)
         {
             m_MainCanvas = mainCanvas;
             m_AssetManager = assetManager;
@@ -35,6 +38,7 @@ namespace App.Menu.UI.External
             m_SceneManager = sceneManager;
             m_SoftCurrencyController = softCurrencyController;
             m_EnergyCurrencyController = energyCurrencyController;
+            m_SoundManager = soundManager;
         }
 
         public void Init()
@@ -43,7 +47,8 @@ namespace App.Menu.UI.External
                 m_AssetManager, 
                 m_MainCanvas,
                 m_SoftCurrencyController,
-                m_EnergyCurrencyController);
+                m_EnergyCurrencyController,
+                m_SoundManager);
             if (!m_Presenter.Initialize())
             {
                 Debug.LogError($"Cant initialize");

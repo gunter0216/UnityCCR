@@ -12,6 +12,9 @@ namespace App.Menu.UI.External.View.Clicker
         [SerializeField] private TMP_Text m_ClickerButtonText;
         [SerializeField] private TMP_Text m_EnergyAmountText;
         [SerializeField] private TMP_Text m_SoftAmountText;
+        [SerializeField] private ParticleSystem m_ParticleSystem;
+        
+        public ParticleSystem ParticleSystem => m_ParticleSystem;
         
         public RectTransform ButtonRectTransform => m_ButtonRectTransform;
         
