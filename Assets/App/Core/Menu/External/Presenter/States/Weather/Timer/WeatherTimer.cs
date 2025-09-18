@@ -21,7 +21,7 @@ namespace App.Menu.UI.External.Presenter.Timer
             StopTimer();
 
             m_Timer = Observable
-                .Interval(TimeSpan.FromSeconds(m_ConfigController.GetRequestPeriod()))
+                .Interval(TimeSpan.FromSeconds(m_ConfigController.GetRequestInterval()))
                 .Subscribe(OnTimerTick);
         }
         

@@ -73,7 +73,10 @@ namespace App.Core.Menu.External.Presenter
                 m_View.WeatherView, 
                 m_AssetManager,
                 m_WebRequestManager);
-            m_DogsMenuState = new DogsMenuState(m_View.DogsView);
+            m_DogsMenuState = new DogsMenuState(
+                m_View.DogsView,
+                m_AssetManager,
+                m_WebRequestManager);
             
             m_ClickerMenuState.Initialize();
             m_WeatherMenuState.Initialize();
@@ -138,6 +141,8 @@ namespace App.Core.Menu.External.Presenter
         {
             m_SoftAccrualAnimation?.Dispose();
             m_ClickerMenuState?.Dispose();
+            m_WeatherMenuState?.Dispose();
+            m_DogsMenuState?.Dispose();
         }
     }
 }

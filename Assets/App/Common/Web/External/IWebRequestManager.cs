@@ -9,6 +9,7 @@ namespace App.Common.Web.External
     {
         long SendGet(string url, Action<UnityWebRequest> onComplete);
         long SendGet<T>(string url, Action<Optional<T>> onComplete) where T : class;
+        long SendGet<T>(Uri uri, Action<Optional<T>> onComplete) where T : class;
         void CancelAll();
         void Cancel(long id);
         bool IsRequestActive(long id);

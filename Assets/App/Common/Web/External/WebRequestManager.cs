@@ -53,6 +53,11 @@ namespace App.Common.Web.External
             return id;
         }
 
+        public long SendGet<T>(Uri uri, Action<Optional<T>> onComplete) where T : class
+        {
+            return SendGet(uri.AbsoluteUri, onComplete);
+        }
+
         public long GetSprite(string url, Action<Optional<Sprite>> onComplete)
         {
             var id = GetTexture(url, (result) =>

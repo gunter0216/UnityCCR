@@ -30,9 +30,9 @@ namespace App.Core.Menu.External.Presenter.States.Weather.Config
             return true;
         }
      
-        public long GetRequestPeriod()
+        public long GetRequestInterval()
         {
-            return m_Config.RequestPeriod;
+            return m_Config.RequestInterval < 0 ? 5 : m_Config.RequestInterval;
         }
     }
 }

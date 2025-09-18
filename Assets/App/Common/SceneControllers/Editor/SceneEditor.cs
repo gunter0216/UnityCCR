@@ -9,13 +9,13 @@ namespace App.Common.SceneControllers.Editor
     public class SceneEditor
     {
 #if UNITY_EDITOR
-        [MenuItem("Helper/Scenes/StartScene", false, 1)]
+        [MenuItem("Helper/Scenes/Start", false, 1)]
         public static void GoToStartScene()
         {
             OpenScene($"Assets/Scenes/{SceneConstants.StartScene}.unity");
         }
         
-        [MenuItem("Helper/Scenes/CoreScene", false, 2)]
+        [MenuItem("Helper/Scenes/Core", false, 2)]
         public static void GoToCoreScene()
         {
             OpenScene($"Assets/Scenes/{SceneConstants.CoreScene}.unity");
@@ -29,8 +29,6 @@ namespace App.Common.SceneControllers.Editor
                 return;
             }
             
-            bool isSaved = EditorSceneManager.SaveScene(SceneManager.GetActiveScene(), SceneManager.GetActiveScene().path);
-            Debug.Log("Saved Scene " + (isSaved ? "OK" : "Error!"));
             EditorSceneManager.OpenScene(name);
         }
 #endif

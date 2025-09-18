@@ -61,7 +61,6 @@ namespace App.Menu.UI.External.Presenter
                 return;
             }
             
-            
             SendRequest();
         }
 

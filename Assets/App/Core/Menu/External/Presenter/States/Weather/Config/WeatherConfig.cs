@@ -5,8 +5,8 @@ namespace App.Core.Menu.External.Presenter.States.Weather.Config
     [CreateAssetMenu(fileName = "WeatherConfig", menuName = "Configs/WeatherConfig")]
     public class WeatherConfig : ScriptableObject
     {
-        [SerializeField] private long m_RequestPeriod;
+        [SerializeField] private long m_RequestInterval;
         
-        public long RequestPeriod => m_RequestPeriod;
+        public long RequestInterval => m_RequestInterval;
     }
 }
