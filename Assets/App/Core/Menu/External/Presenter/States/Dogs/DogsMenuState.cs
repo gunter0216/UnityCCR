@@ -69,18 +69,33 @@ namespace App.Menu.UI.External.Presenter
         {
             if (IsRequestActive())
             {
+                if (m_BreedWhoseFactsLoading != null && breed == m_BreedWhoseFactsLoading)
+                {
+                    return;
+                }
+                
+                m_BreedWhoseFactsLoading?.SetLoadDownloadIconActive(false);
+                m_BreedWhoseFactsLoading = null;
                 CancelRequest();
             }
-
+            
             m_BreedWhoseFactsLoading = breed;
             var url =$"{m_Url}breeds/{breed.Breed.Id}";
-            m_RequestId = m_WebRequestManager.SendGet<FactsResponseDto>(url, OnFactsRequestComplete);
+            m_RequestId = m_WebRequestManager.SendGet<FactsResponseDto>(url, (response) =>
+            {
+                OnFactsRequestComplete(breed, response);
+            });
             breed.SetLoadDownloadIconActive(true);
         }
 
-        private void OnFactsRequestComplete(Optional<FactsResponseDto> dto)
+        private void OnFactsRequestComplete(BreedPresenter breed, Optional<FactsResponseDto> dto)
         {
-            m_BreedWhoseFactsLoading.SetLoadDownloadIconActive(false);
+            if (m_BreedWhoseFactsLoading != null && breed == m_BreedWhoseFactsLoading)
+            {
+                m_BreedWhoseFactsLoading?.SetLoadDownloadIconActive(false);
+                m_BreedWhoseFactsLoading = null;
+            }
+            
             if (!dto.HasValue)
             {
                 Debug.LogError("DogsMenuState: No data in facts response");
