@@ -46,7 +46,7 @@ namespace Core.Currency.External
             
             if (addResult.Result == CalculationErrors.Overflow)
             {
-                Debug.LogError("[EnergyCurrencyController] Overflow with add operation");
+                Debug.LogError("[SoftCurrencyController] Overflow with add operation");
                 m_Data.Value = addResult.Value;
                 return true;
             }
@@ -66,7 +66,7 @@ namespace Core.Currency.External
 
             if (subtractValue.Result == CalculationErrors.Overflow)
             {
-                Debug.LogError("[EnergyCurrencyController] Overflow with Spend operation");
+                Debug.LogError("[SoftCurrencyController] Overflow with Spend operation");
                 return false;
             }
             

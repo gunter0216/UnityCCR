@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b2b1f03fbf4cc3b8da225fb7efccbe, type: 3}
   m_Name: ClickerConfig
   m_EditorClassIdentifier: 
-  m_AutoCollectionTimerPeriod: 3
+  m_AutoCollectionTimerInterval: 3
   m_AutoCollectionTimerEnergyPrice: 1
   m_AutoCollectionTimerSoftIncome: 1
   m_ClickEnergyPrice: 1
   m_ClickSoftIncome: 1
-  m_EnergyRecoveryPeriod: 10
+  m_EnergyRecoveryInterval: 10
   m_EnergyRecoveryValue: 10

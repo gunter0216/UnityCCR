@@ -31,9 +31,9 @@ namespace App.Menu.UI.External.Presenter
             return true;
         }
         
-        public long GetAutoCollectionTimerPeriod()
+        public long GetAutoCollectionTimerInterval()
         {
-            return m_Config.AutoCollectionTimerPeriod;
+            return m_Config.AutoCollectionTimerInterval;
         }
         
         public long GetAutoCollectionTimerEnergyPrice()
@@ -56,9 +56,9 @@ namespace App.Menu.UI.External.Presenter
             return m_Config.ClickSoftIncome;
         }
         
-        public long GetEnergyRecoveryPeriod()
+        public long GetEnergyRecoveryInterval()
         {
-            return m_Config.EnergyRecoveryPeriod;
+            return m_Config.EnergyRecoveryInterval;
         }
         
         public long GetEnergyRecoveryValue()

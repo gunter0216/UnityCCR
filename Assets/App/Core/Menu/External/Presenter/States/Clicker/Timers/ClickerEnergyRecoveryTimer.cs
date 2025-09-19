@@ -20,7 +20,7 @@ namespace App.Menu.UI.External.Presenter
             StopTimer();
 
             m_Timer = Observable
-                .Interval(TimeSpan.FromSeconds(m_ConfigController.GetEnergyRecoveryPeriod()))
+                .Interval(TimeSpan.FromSeconds(m_ConfigController.GetEnergyRecoveryInterval()))
                 .Subscribe(OnTimerTick);
         }
         

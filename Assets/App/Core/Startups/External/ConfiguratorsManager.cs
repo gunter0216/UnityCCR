@@ -49,7 +49,7 @@ namespace App.Core.Startups.External
                 }
                 else
                 {
-                    Debug.LogError($"huh?");
+                    Debug.LogError($"Configurator {node.Holder} is not Configurator");
                     return;
                 }
             }
