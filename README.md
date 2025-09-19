@@ -71,6 +71,12 @@ https://docs.unity3d.com/6000.1/Documentation/Manual/cus-layout.html
 
 PS: Runtime папка чаще используется в Common. Обычно для Core я тоже использую папку Runtime, но для этого требуется больше времени.
 
+### Web
+
+В папке App/Common/Web есть класс WebRequestManager  
+Он позволяет удобно создавать запросы, которые возвращают результат в виде дто класса, 
+спрайта. Отменять их по id и ставить в очередь.
+
 ## Кликер
 
 В конфиге App/Core/Configs/EnergyConfig
