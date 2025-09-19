@@ -27,6 +27,14 @@ namespace App.Menu.UI.External.Presenter
             m_View.SetActive(status);
         }
 
+        public void OpenWindow(FactsAttributesDto facts)
+        {
+            m_View.SwitchStateByHeight.SetLessState(); 
+            SetActive(true); 
+            SetInfo(facts); 
+            m_View.SwitchStateByHeight.UpdateState(); 
+        }
+
         public void SetInfo(FactsAttributesDto facts)
         {
             m_View.SetNameText(facts.Name);

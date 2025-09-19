@@ -1,7 +1,7 @@
 ﻿using App.Common.AssetSystem.Runtime;
 using App.Common.Data.Runtime;
-using App.Common.Events.External;
 using App.Common.Utilities.Utility.Runtime;
+using Core.Currency.Calculator.Runtime;
 using UnityEngine;
 
 namespace Core.Currency.External
@@ -9,16 +9,16 @@ namespace Core.Currency.External
     public class EnergyCurrencyController : IInitSystem
     {
         private readonly IDataManager m_DataManager;
-        private readonly EventManager m_EventManager;
         private readonly IAssetManager m_AssetManager;
+        
+        private readonly ICurrencyCalculator m_CurrencyCalculator = new CurrencyCalculator();
         
         private EnergyCurrencyData m_Data;
         private EnergyConfigController m_ConfigController;
 
-        public EnergyCurrencyController(IDataManager dataManager, EventManager eventManager, IAssetManager assetManager)
+        public EnergyCurrencyController(IDataManager dataManager, IAssetManager assetManager)
         {
             m_DataManager = dataManager;
-            m_EventManager = eventManager;
             m_AssetManager = assetManager;
         }
 
@@ -35,7 +35,11 @@ namespace Core.Currency.External
             }
             
             m_Data = data.Value;
-            m_Data.Value = m_ConfigController.GetStartValue();
+            if (!m_Data.Initialized)
+            {
+                m_Data.Value = m_ConfigController.GetStartValue();
+                m_Data.Initialized = true;
+            }
         }
 
         public long GetValue()
@@ -45,7 +49,21 @@ namespace Core.Currency.External
 
         public bool Add(long value)
         {
-            m_Data.Value += value;
+            var addResult = m_CurrencyCalculator.Add(m_Data.Value, value);
+            if (addResult.Result == CalculationErrors.Success || addResult.Result == CalculationErrors.BiggerThanMax)
+            {
+                m_Data.Value = addResult.Value;
+            } 
+            else if (addResult.Result == CalculationErrors.Overflow)
+            {
+                Debug.LogError("[EnergyCurrencyController] Overflow with add operation");
+                m_Data.Value = addResult.Value;
+            }
+            else
+            {
+                return false;
+            }
+            
             var maxValue = m_ConfigController.GetMaxValue();
             m_Data.Value = m_Data.Value > maxValue ? maxValue : m_Data.Value; 
             
@@ -54,7 +72,19 @@ namespace Core.Currency.External
         
         public bool Spend(long value)
         {
-            m_Data.Value -= value;
+            var subtractValue = m_CurrencyCalculator.Subtract(m_Data.Value, value);
+            
+            if (subtractValue.Result == CalculationErrors.Success)
+            {
+                m_Data.Value = subtractValue.Value;
+                return true;
+            }
+
+            if (subtractValue.Result == CalculationErrors.Overflow)
+            {
+                Debug.LogError("[EnergyCurrencyController] Overflow with Spend operation");
+                return false;
+            }
             
             return true;
         }

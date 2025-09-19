@@ -103,10 +103,7 @@ namespace App.Menu.UI.External.Presenter
             }
             
             var facts = dto.Value.Data.Attributes;
-            m_View.BreedInfoWindow.SwitchStateByHeight.SetLessState();
-            m_InfoWindowPresenter.SetActive(true);
-            m_InfoWindowPresenter.SetInfo(facts);
-            m_View.BreedInfoWindow.SwitchStateByHeight.UpdateState();
+            m_InfoWindowPresenter.OpenWindow(facts);
         }
 
         private bool IsRequestActive()
