@@ -9,6 +9,8 @@ namespace App.Common.Web.External
 {
     public class WebRequestManager : IWebRequestManager
     {
+        private const int m_RequestTimeout = 10;
+        
         private readonly IJsonDeserializer m_JsonDeserializer;
         private readonly RequestIDGenerator m_IDGenerator;
         
@@ -24,7 +26,7 @@ namespace App.Common.Web.External
         public long SendGet(string url, Action<UnityWebRequest> onComplete)
         {
             var request = UnityWebRequest.Get(url);
-            request.timeout = 10;
+            request.timeout = m_RequestTimeout;
             return StartRequest(request, onComplete);
         }
 
@@ -84,7 +86,7 @@ namespace App.Common.Web.External
         public long GetTexture(string url, Action<Optional<Texture2D>> onComplete)
         {
             var request = UnityWebRequestTexture.GetTexture(url);
-            request.timeout = 10;
+            request.timeout = m_RequestTimeout;
             return StartRequest(request, (_) =>
             {
                 if (request.result != UnityWebRequest.Result.Success)
