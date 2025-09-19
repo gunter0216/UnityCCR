@@ -103,6 +103,7 @@ namespace App.Core.Menu.External.Presenter.States.Weather
         {
             m_View.SetActive(true);
             m_Timer.StartTimer();
+            SendRequest();
         }
 
         public void Exit()
