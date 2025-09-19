@@ -66,7 +66,7 @@ namespace App.Core.Menu.External.Animations
             }
             
             view.Value.SetParent(parent);
-            view.Value.SetCountText(amount.ToString());
+            view.Value.SetCountText($"+{amount.ToString()}");
             view.Value.SetLocalPosition(localPosition);
             view.Value.SetAsLastSibling();
             
