@@ -1,4 +1,4 @@
-﻿namespace App.Core.Startups.External
+﻿namespace App.Core.Startups.External.Constants
 {
     public class ContextConstants
     {

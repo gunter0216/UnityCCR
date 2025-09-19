@@ -1,13 +1,15 @@
 ﻿using System;
 using App.Common.AssetSystem.Runtime;
 using App.Common.Audio.External;
-using App.Menu.UI.External.Animations;
-using App.Menu.UI.External.View.Clicker;
-using Core.Currency.External;
-using UniRx;
+using App.Core.Currency.External.Energy;
+using App.Core.Currency.External.Soft;
+using App.Core.Menu.External.Animations;
+using App.Core.Menu.External.Presenter.States.Clicker.Config;
+using App.Core.Menu.External.Presenter.States.Clicker.Timers;
+using App.Core.Menu.External.View.Clicker;
 using UnityEngine;
 
-namespace App.Menu.UI.External.Presenter
+namespace App.Core.Menu.External.Presenter.States.Clicker
 {
     public class ClickerMenuState : IMenuState, IDisposable
     {

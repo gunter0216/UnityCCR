@@ -1,9 +1,8 @@
 using System;
 using App.Common.Data.Runtime;
 using Newtonsoft.Json;
-using UnityEngine;
 
-namespace Core.Currency.External
+namespace App.Core.Currency.External.Soft
 {
     [Serializable]
     [JsonObject(MemberSerialization.Fields)]

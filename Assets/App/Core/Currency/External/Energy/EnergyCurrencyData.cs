@@ -2,7 +2,7 @@
 using App.Common.Data.Runtime;
 using Newtonsoft.Json;
 
-namespace Core.Currency.External
+namespace App.Core.Currency.External.Energy
 {
     [Serializable]
     [JsonObject(MemberSerialization.Fields)]

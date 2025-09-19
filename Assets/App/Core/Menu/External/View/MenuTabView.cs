@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace App.Menu.UI.External.View
+namespace App.Core.Menu.External.View
 {
     public class MenuTabView : MonoBehaviour
     {

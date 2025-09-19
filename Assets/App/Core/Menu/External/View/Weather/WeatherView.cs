@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace App.Menu.UI.External.View.Weather
+namespace App.Core.Menu.External.View.Weather
 {
     public class WeatherView : MonoBehaviour
     {

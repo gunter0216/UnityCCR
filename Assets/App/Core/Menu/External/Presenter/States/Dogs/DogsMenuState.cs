@@ -4,14 +4,15 @@ using App.Common.AssetSystem.Runtime;
 using App.Common.Utilities.Pool.Runtime;
 using App.Common.Utilities.Utility.Runtime;
 using App.Common.Web.External;
+using App.Core.Menu.External.Animations;
 using App.Core.Menu.External.Presenter.States.Dogs.Config;
-using App.Menu.UI.External.Presenter.Dto;
-using App.Menu.UI.External.View.Dogs;
-using Core.Animations.External.Animations;
+using App.Core.Menu.External.Presenter.States.Dogs.Dto.Breeds;
+using App.Core.Menu.External.Presenter.States.Dogs.Dto.Facts;
+using App.Core.Menu.External.View.Dogs;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace App.Menu.UI.External.Presenter
+namespace App.Core.Menu.External.Presenter.States.Dogs
 {
     public class DogsMenuState : IMenuState, IDisposable
     {

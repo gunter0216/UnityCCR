@@ -1,9 +1,9 @@
-﻿using App.Menu.UI.External.View.Clicker;
-using App.Menu.UI.External.View.Dogs;
-using App.Menu.UI.External.View.Weather;
+﻿using App.Core.Menu.External.View.Clicker;
+using App.Core.Menu.External.View.Dogs;
+using App.Core.Menu.External.View.Weather;
 using UnityEngine;
 
-namespace App.Menu.UI.External.View
+namespace App.Core.Menu.External.View
 {
     public class MenuView : MonoBehaviour
     {

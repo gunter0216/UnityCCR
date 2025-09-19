@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using App.Common.Utilities.Utility.Runtime.Extensions;
-using App.Core.Menu.External.Animations;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Core.Animations.External.Animations
+namespace App.Core.Menu.External.Animations
 {
     public class RotateAnimation : IDisposable
     {

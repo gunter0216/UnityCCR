@@ -1,6 +1,6 @@
 ﻿using System;
-using App.Menu.UI.External.Presenter;
-using App.Menu.UI.External.View;
+using App.Core.Menu.External.Presenter.States;
+using App.Core.Menu.External.View;
 
 namespace App.Core.Menu.External.Presenter
 {

@@ -1,11 +1,12 @@
-using App.Common.Autumn.Runtime.Attributes;
 using App.Common.FSM.External;
 using App.Core.Startups.External;
+using App.Core.Startups.External.Attributes;
+using App.Core.Startups.External.Constants;
 
 namespace App.Common.Audio.External
 {
     [Configurator(ContextConstants.CoreContext)]
-    public class SoundConfigurator : Autumn.Runtime.Collection.Configurator
+    public class SoundConfigurator : Core.Startups.External.Configurator
     {
         public override void Configuration()
         {

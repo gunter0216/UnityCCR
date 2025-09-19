@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace App.Menu.UI.External.Presenter
+namespace App.Core.Menu.External.Presenter.States.Clicker.Config
 {
     [CreateAssetMenu(fileName = "ClickerConfig", menuName = "Configs/ClickerConfig")]
     public class ClickerConfig : ScriptableObject

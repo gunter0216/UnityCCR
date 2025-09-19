@@ -1,7 +1,7 @@
-﻿using App.Menu.UI.External.Presenter.Dto;
-using App.Menu.UI.External.View.Dogs;
+﻿using App.Core.Menu.External.Presenter.States.Dogs.Dto.Facts;
+using App.Core.Menu.External.View.Dogs;
 
-namespace App.Menu.UI.External.Presenter
+namespace App.Core.Menu.External.Presenter.States.Dogs
 {
     public class BreedInfoWindowPresenter
     {

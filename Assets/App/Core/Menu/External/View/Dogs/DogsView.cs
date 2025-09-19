@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UIElements;
 
-namespace App.Menu.UI.External.View.Dogs
+namespace App.Core.Menu.External.View.Dogs
 {
     public class DogsView : MonoBehaviour
     {

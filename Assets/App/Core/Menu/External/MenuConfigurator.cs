@@ -1,11 +1,9 @@
-﻿using App.Common.Autumn.Runtime.Attributes;
-using App.Common.Autumn.Runtime.Collection;
-using App.Common.Data.Runtime;
-using App.Common.FSM.External;
+﻿using App.Common.FSM.External;
 using App.Core.Startups.External;
-using Zenject;
+using App.Core.Startups.External.Attributes;
+using App.Core.Startups.External.Constants;
 
-namespace App.Menu.UI.External
+namespace App.Core.Menu.External
 {
     [Configurator(ContextConstants.CoreContext)]    
     public class MenuConfigurator : Configurator

@@ -1,7 +1,6 @@
-﻿using App.Common.Autumn.Runtime.Attributes;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace App.Game.Canvases.External
+namespace App.Core.Canvases.External
 {
     public class MainCanvas : MonoBehaviour, ICanvas
     {

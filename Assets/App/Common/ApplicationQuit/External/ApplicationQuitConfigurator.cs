@@ -1,11 +1,12 @@
-﻿using App.Common.Autumn.Runtime.Attributes;
-using App.Common.FSM.External;
+﻿using App.Common.FSM.External;
 using App.Core.Startups.External;
+using App.Core.Startups.External.Attributes;
+using App.Core.Startups.External.Constants;
 
 namespace App.Common.ApplicationQuit.External
 {
     [Configurator(ContextConstants.GlobalContext)]
-    public class ApplicationQuitConfigurator : Autumn.Runtime.Collection.Configurator
+    public class ApplicationQuitConfigurator : Core.Startups.External.Configurator
     {
         public override void Configuration()
         {

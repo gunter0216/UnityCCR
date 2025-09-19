@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace App.Menu.UI.External.View.Clicker
+namespace App.Core.Menu.External.View.Clicker
 {
     public class ClickerView : MonoBehaviour
     {

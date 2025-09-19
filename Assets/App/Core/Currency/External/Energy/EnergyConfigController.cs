@@ -1,7 +1,7 @@
 ﻿using App.Common.AssetSystem.Runtime;
 using UnityEngine;
 
-namespace Core.Currency.External
+namespace App.Core.Currency.External.Energy
 {
     public class EnergyConfigController
     {

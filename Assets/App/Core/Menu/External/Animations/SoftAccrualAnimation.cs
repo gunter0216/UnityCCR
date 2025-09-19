@@ -2,12 +2,12 @@
 using App.Common.AssetSystem.Runtime;
 using App.Common.Utilities.Pool.Runtime;
 using App.Common.Utilities.Utility.Runtime;
-using App.Game.Canvases.External;
+using App.Core.Canvases.External;
 using DG.Tweening;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace App.Menu.UI.External.Animations
+namespace App.Core.Menu.External.Animations
 {
     public class SoftAccrualAnimation : IDisposable, ISoftAccrualAnimation
     {

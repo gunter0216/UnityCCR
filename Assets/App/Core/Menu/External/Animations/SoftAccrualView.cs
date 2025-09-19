@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace App.Menu.UI.External.Animations
+namespace App.Core.Menu.External.Animations
 {
     public class SoftAccrualView : MonoBehaviour
     {

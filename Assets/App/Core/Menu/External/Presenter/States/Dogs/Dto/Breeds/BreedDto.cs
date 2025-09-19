@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace App.Menu.UI.External.Presenter.Dto
+namespace App.Core.Menu.External.Presenter.States.Dogs.Dto.Breeds
 {
     [Serializable]
     [JsonObject(MemberSerialization.Fields)]

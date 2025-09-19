@@ -5,12 +5,13 @@ using App.Common.Data.Runtime;
 using App.Common.SceneControllers.Runtime;
 using App.Common.Utilities.Utility.Runtime;
 using App.Common.Web.External;
+using App.Core.Canvases.External;
+using App.Core.Currency.External.Energy;
+using App.Core.Currency.External.Soft;
 using App.Core.Menu.External.Presenter;
-using App.Game.Canvases.External;
-using Core.Currency.External;
 using UnityEngine;
 
-namespace App.Menu.UI.External
+namespace App.Core.Menu.External
 {
     public class MenuController : IInitSystem, IDisposable
     {

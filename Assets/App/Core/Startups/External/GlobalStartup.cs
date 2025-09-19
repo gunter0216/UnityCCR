@@ -1,7 +1,8 @@
 ﻿using App.Common.AssemblyManager.External;
-using App.Common.Autumn.Runtime.Attributes;
 using App.Common.Data.Runtime;
 using App.Common.FSM.External;
+using App.Core.Startups.External.Attributes;
+using App.Core.Startups.External.Constants;
 using Zenject;
 
 namespace App.Core.Startups.External

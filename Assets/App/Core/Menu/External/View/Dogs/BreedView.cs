@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace App.Menu.UI.External.View.Dogs
+namespace App.Core.Menu.External.View.Dogs
 {
     public class BreedView : MonoBehaviour
     {

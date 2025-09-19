@@ -1,8 +1,7 @@
 using App.Common.AssetSystem.Runtime;
-using Core.Currency.External;
 using UnityEngine;
 
-namespace App.Menu.UI.External.Presenter
+namespace App.Core.Menu.External.Presenter.States.Clicker.Config
 {
     public class ClickerConfigController
     {

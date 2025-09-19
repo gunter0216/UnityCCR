@@ -4,7 +4,7 @@ using App.Common.Utilities.Utility.Runtime;
 using Core.Currency.Calculator.Runtime;
 using UnityEngine;
 
-namespace Core.Currency.External
+namespace App.Core.Currency.External.Energy
 {
     public class EnergyCurrencyController : IInitSystem
     {

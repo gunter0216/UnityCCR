@@ -1,10 +1,11 @@
-﻿using App.Common.Autumn.Runtime.Attributes;
-using App.Common.Autumn.Runtime.Collection;
-using App.Common.FSM.External;
+﻿using App.Common.FSM.External;
+using App.Core.Currency.External.Energy;
+using App.Core.Currency.External.Soft;
 using App.Core.Startups.External;
-using UnityEngine;
+using App.Core.Startups.External.Attributes;
+using App.Core.Startups.External.Constants;
 
-namespace Core.Currency.External
+namespace App.Core.Currency.External
 {
     [Configurator(ContextConstants.GlobalContext)]
     public class CurrencyConfigurator : Configurator

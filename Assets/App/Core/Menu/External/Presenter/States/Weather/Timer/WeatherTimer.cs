@@ -2,7 +2,7 @@ using System;
 using App.Core.Menu.External.Presenter.States.Weather.Config;
 using UniRx;
 
-namespace App.Menu.UI.External.Presenter.Timer
+namespace App.Core.Menu.External.Presenter.States.Weather.Timer
 {
     public class WeatherTimer : IDisposable
     {

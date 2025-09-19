@@ -1,7 +1,8 @@
 using System;
+using App.Core.Menu.External.Presenter.States.Clicker.Config;
 using UniRx;
 
-namespace App.Menu.UI.External.Presenter
+namespace App.Core.Menu.External.Presenter.States.Clicker.Timers
 {
     public class ClickerAutoCollectionTimer : IDisposable
     {

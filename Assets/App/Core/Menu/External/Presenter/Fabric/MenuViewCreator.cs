@@ -1,9 +1,9 @@
 ﻿using App.Common.AssetSystem.Runtime;
 using App.Common.Utilities.Utility.Runtime;
-using App.Game.Canvases.External;
-using App.Menu.UI.External.View;
+using App.Core.Canvases.External;
+using App.Core.Menu.External.View;
 
-namespace App.Menu.UI.External.Services
+namespace App.Core.Menu.External.Presenter.Fabric
 {
     public class MenuViewCreator
     {

@@ -2,12 +2,16 @@
 using App.Common.AssetSystem.Runtime;
 using App.Common.Audio.External;
 using App.Common.Web.External;
-using App.Game.Canvases.External;
-using App.Menu.UI.External.Animations;
-using App.Menu.UI.External.Presenter;
-using App.Menu.UI.External.Services;
-using App.Menu.UI.External.View;
-using Core.Currency.External;
+using App.Core.Canvases.External;
+using App.Core.Currency.External.Energy;
+using App.Core.Currency.External.Soft;
+using App.Core.Menu.External.Animations;
+using App.Core.Menu.External.Presenter.Fabric;
+using App.Core.Menu.External.Presenter.States;
+using App.Core.Menu.External.Presenter.States.Clicker;
+using App.Core.Menu.External.Presenter.States.Dogs;
+using App.Core.Menu.External.Presenter.States.Weather;
+using App.Core.Menu.External.View;
 using UnityEngine;
 
 namespace App.Core.Menu.External.Presenter

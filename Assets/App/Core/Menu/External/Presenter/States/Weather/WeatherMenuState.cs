@@ -3,12 +3,12 @@ using App.Common.AssetSystem.Runtime;
 using App.Common.Utilities.Utility.Runtime;
 using App.Common.Web.External;
 using App.Core.Menu.External.Presenter.States.Weather.Config;
-using App.Menu.UI.External.Presenter.Dto;
-using App.Menu.UI.External.Presenter.Timer;
-using App.Menu.UI.External.View.Weather;
+using App.Core.Menu.External.Presenter.States.Weather.Dto;
+using App.Core.Menu.External.Presenter.States.Weather.Timer;
+using App.Core.Menu.External.View.Weather;
 using UnityEngine;
 
-namespace App.Menu.UI.External.Presenter
+namespace App.Core.Menu.External.Presenter.States.Weather
 {
     public class WeatherMenuState : IMenuState, IDisposable
     {

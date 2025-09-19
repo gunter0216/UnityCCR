@@ -1,12 +1,13 @@
-﻿using App.Common.Autumn.Runtime.Attributes;
-using App.Common.Data.Runtime;
+﻿using App.Common.Data.Runtime;
 using App.Common.FSM.External;
 using App.Core.Startups.External;
+using App.Core.Startups.External.Attributes;
+using App.Core.Startups.External.Constants;
 
 namespace App.Common.Data.External
 {
     [Configurator(ContextConstants.GlobalContext)]    
-    public class DataConfigurator : Autumn.Runtime.Collection.Configurator
+    public class DataConfigurator : Core.Startups.External.Configurator
     {
         public override void Configuration()
         {

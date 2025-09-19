@@ -2,7 +2,7 @@
 using App.Common.FSM.External;
 using Zenject;
 
-namespace App.Common.Autumn.Runtime.Collection
+namespace App.Core.Startups.External
 {
     public abstract class Configurator
     {
