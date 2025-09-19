@@ -25,6 +25,8 @@ namespace App.Core.Menu.External.Presenter.States.Clicker
         private ClickerAutoCollectionTimer m_AutoCollectionTimer;
         private ClickerEnergyRecoveryTimer m_EnergyRecoveryTimer;
 
+        private bool m_IsActive = false;
+
         public ClickerMenuState(ClickerView view,
             ISoftAccrualAnimation softAccrualAnimation,
             SoftCurrencyController softCurrencyController,
@@ -52,8 +54,7 @@ namespace App.Core.Menu.External.Presenter.States.Clicker
             
             m_EnergyRecoveryTimer.StartTimer();
             
-            UpdateSoftView();
-            UpdateEnergyView();
+            UpdateCurrencyViews();
         }
 
         private void OnEnergyRecoveryTimerTick()
@@ -83,17 +84,18 @@ namespace App.Core.Menu.External.Presenter.States.Clicker
                 return;
             }
             
-            var parent = m_View.ButtonRectTransform;
-            var localPosition = new Vector3(0, 100, 0);
-            m_SoundManager.Play("TapSound");
-            m_SoftAccrualAnimation.PlayAnimation(localPosition, parent, softIncome);
-            m_View.ParticleSystem.Play();
-            
             m_SoftCurrencyController.Add(softIncome);
             m_EnergyCurrencyController.Spend(energySpend);
             
-            UpdateEnergyView();
-            UpdateSoftView();
+            if (m_IsActive)
+            {
+                var parent = m_View.ButtonRectTransform;
+                var localPosition = new Vector3(0, 100, 0);
+                m_SoundManager.Play("TapSound");
+                m_SoftAccrualAnimation.PlayAnimation(localPosition, parent, softIncome);
+                m_View.ParticleSystem.Play();
+                UpdateCurrencyViews();
+            }
         }
 
         private void UpdateSoftView()
@@ -107,17 +109,25 @@ namespace App.Core.Menu.External.Presenter.States.Clicker
             var energyAmount = m_EnergyCurrencyController.GetValue();
             m_View.SetEnergyAmountText(energyAmount.ToString());
         }
+        
+        private void UpdateCurrencyViews()
+        {
+            UpdateSoftView();
+            UpdateEnergyView();
+        }
 
         public void Enter()
         {
             m_View.SetActive(true);
             m_AutoCollectionTimer.StartTimer();
+            m_IsActive = true;
+            UpdateCurrencyViews();
         }
 
         public void Exit()
         {
             m_View.SetActive(false);
-            m_AutoCollectionTimer.StopTimer();
+            m_IsActive = false;
         }
 
         public void Dispose()
