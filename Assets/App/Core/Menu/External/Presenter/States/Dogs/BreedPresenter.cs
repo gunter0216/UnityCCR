@@ -35,6 +35,8 @@ namespace App.Core.Menu.External.Presenter.States.Dogs
             m_View.SetNameText(m_Breed.Attributes.Name);
             m_View.SetNumberText((index + 1).ToString());
             m_View.SetDownloadIconActive(false);
+            SetAsLastSibling();
+            SetLoadDownloadIconActive(false);
         }
 
         public void SetActive(bool status)

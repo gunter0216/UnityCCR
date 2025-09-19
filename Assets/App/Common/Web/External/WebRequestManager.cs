@@ -36,7 +36,7 @@ namespace App.Common.Web.External
             {
                 if (request.result != UnityWebRequest.Result.Success)
                 {
-                    Debug.LogError($"WebRequestManager: Failed to get data from {url}, error: {request.error}");
+                    Debug.Log($"WebRequestManager: Failed to get data from {url}, error: {request.error}");
                     onComplete?.Invoke(Optional<T>.Fail());
                     return;
                 }
@@ -44,7 +44,7 @@ namespace App.Common.Web.External
                 var result = m_JsonDeserializer.Deserialize<T>(request.downloadHandler.text);
                 if (!result.HasValue)
                 {
-                    Debug.LogError("WebRequestManager: Failed to deserialize response");
+                    Debug.Log("WebRequestManager: Failed to deserialize response");
                     onComplete?.Invoke(Optional<T>.Fail());
                     return;
                 }
@@ -91,7 +91,7 @@ namespace App.Common.Web.External
             {
                 if (request.result != UnityWebRequest.Result.Success)
                 {
-                    Debug.LogError($"WebRequestManager: Failed to download texture from {url}, error: {request.error}");
+                    Debug.Log($"WebRequestManager: Failed to download texture from {url}, error: {request.error}");
                     onComplete?.Invoke(Optional<Texture2D>.Fail());
                     return;
                 }
@@ -99,7 +99,7 @@ namespace App.Common.Web.External
                 var texture = DownloadHandlerTexture.GetContent(request);
                 if (texture == null)
                 {
-                    Debug.LogError($"WebRequestManager: Downloaded texture is null from {url}");
+                    Debug.Log($"WebRequestManager: Downloaded texture is null from {url}");
                     onComplete?.Invoke(Optional<Texture2D>.Fail());
                 }
                 
@@ -121,7 +121,7 @@ namespace App.Common.Web.External
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"WebRequestManager: Error while processing request completion: {e}");
+                    Debug.Log($"WebRequestManager: Error while processing request completion: {e}");
                 }
                 finally
                 {

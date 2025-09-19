@@ -20,7 +20,7 @@ namespace App.Core.Menu.External.View.Dogs
             gameObject.SetActive(status);
         }
         
-        public void SetScrollerActive(bool status)
+        public void SetBreedsTableActive(bool status)
         {
             m_ScrollView.SetActive(status);
         }
