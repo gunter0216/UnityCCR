@@ -15,6 +15,13 @@
 + Кастомный ListPool
 + GoF, StateMachine, GRASP 
 
+### UI
+
++ Разрешение 1284x2778 (iPhone 12 Pro Max)
++ Протестировано на iPhone 12 Pro Max, iPad Pro 12.9, Samsung Galaxy
++ SafeArea добавлена
++ Вертикалка
+
 ### Иерархия папок проекта
 
 + App
